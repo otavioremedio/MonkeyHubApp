@@ -6,8 +6,10 @@
 
     <!--onetosource = da view pra view model apenas-->
     <!--stringformat-->
-	<Entry Text="{Binding Descricao}"            
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <StackLayout>
+        <Entry Text="{Binding SearchTerm}"/>
+        <Button Text="Pesquisar" Command="{Binding SearchCommand}" />
+    </StackLayout>
+	
 
 </ContentPage>
