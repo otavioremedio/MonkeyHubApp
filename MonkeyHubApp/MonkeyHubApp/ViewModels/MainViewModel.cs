@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace MonkeyHubApp.ViewModels
 {
@@ -15,6 +17,8 @@ namespace MonkeyHubApp.ViewModels
                     SearchCommand.ChangeCanExecute();
             }
         }
+        
+        public ObservableCollection<string> Resultados { get; }
 
         public Command SearchCommand { get; }
         
@@ -54,6 +58,8 @@ namespace MonkeyHubApp.ViewModels
         public MainViewModel()
         {
             SearchCommand = new Command(ExecuteSearchCommand, CanExecuteSearchCommand);
+            Resultados = new ObservableCollection<string>();
+
             //Descricao = "Olá mundo! Eu estou aqui!";
 
             //Task.Delay(3000).ContinueWith(async t => {
@@ -82,7 +88,7 @@ namespace MonkeyHubApp.ViewModels
 
         async void ExecuteSearchCommand()
         {
-            await Task.Delay(2000);
+            //await Task.Delay(2000);
             bool resposta = await App.Current.MainPage.DisplayAlert("MonkeyHubApp", 
                                                     $"Você pesquisou por '{SearchTerm}'?", 
                                                     "Sim",
@@ -94,6 +100,13 @@ namespace MonkeyHubApp.ViewModels
                 await App.Current.MainPage.DisplayAlert("MonkeyHubApp",
                                                    "Obrigado!",
                                                    "OK");
+                for (int i = 1; i < 15; i++)
+                {
+                    Resultados.Add($"Sim {i}");
+                }
+
+                
+
             }
             else
             {
