@@ -2,13 +2,17 @@
 
 namespace MonkeyHubApp
 {
-    public partial class App : Application
+    public partial class App
     {
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MonkeyHubApp.MainPage();
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = Color.FromRgb(0, 167, 243),
+                BarTextColor = Color.White
+			};
         }
 
         protected override void OnStart()
